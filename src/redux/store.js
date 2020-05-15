@@ -12,7 +12,11 @@ prefer redux dev tools, go ahead and copy this as well
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 //----------------------------------------------------------------------------------
 
-const middlewares = [logger];
+const middlewares = [];
+
+if (process.env.NODE_ENV === "development") {
+  middlewares.push(logger);
+}
 
 // compose enhancers is optional for redux dev tools
 export const store = createStore(

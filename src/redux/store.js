@@ -3,9 +3,8 @@ import { persistStore } from "redux-persist";
 import logger from "redux-logger";
 import createSagaMiddleware from "redux-saga";
 
-import { fetchCollectionsStart } from "./shop/shop.sagas";
-
 import rootReducer from "./root-reducer";
+import rootSaga from "./root-saga";
 
 /*
 I prefer using redux dev tools (chrome extension) so 
@@ -29,7 +28,7 @@ export const store = createStore(
   composeEnhancers(applyMiddleware(...middlewares))
 );
 
-sagaMiddleware.run(fetchCollectionsStart);
+sagaMiddleware.run(rootSaga);
 
 export const persistor = persistStore(store);
 
